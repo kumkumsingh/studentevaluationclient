@@ -1,0 +1,23 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+.work-container {
+    max-width: 900px;
+    min-height: 100vh;
+    flex-grow: 1;
+}
+.work-space {
+    margin-left: 15rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.form-container {
+
+}

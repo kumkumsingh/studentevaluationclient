@@ -1,19 +1,18 @@
-import React from "react";
-import AuthService from "../../service/AuthService";
-import { useForm } from "react-hook-form";
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import BatchService from "../../service/BatchService";
 
-export default function Signup(props) {
+export default function AddBatch(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    //    console.log("data :", data)
-    const service = new AuthService();
+    const service = new BatchService();
     service
-      .signup(data.userName, data.email, data.password)
-      .then((resp) => props.history.push("/login"))
+      .addBatch(data.batchName, data.stDate , data.endDate)
+      .then((resp) => props.history.push("/profile"))
       .catch((e) => console.log(e));
   };
   return (
-    <div className="signup-container">
+    <div className="login-container">
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="input"
@@ -21,7 +20,7 @@ export default function Signup(props) {
           placeholder="User Name"
           name="userName"
           ref={register({ 
-            required: "USER NAME IS REQUIRED" }
+            required: "USER NAME REQUIRED" }
          )}
         ></input>
         <input
@@ -30,19 +29,10 @@ export default function Signup(props) {
           name="password"
           placeholder="Password"
           ref={register({
-            required: "PASSWORD REQUIRED",
-            minLength: { value: 8, message: "TOO SHORT" },
+            required: "PASSWORD REQUIRED"
           })}
         ></input>
-        <input
-          className="input"
-          type="text"
-          name="email"
-          placeholder="email address"
-          ref={register({ required: "EMAIL REQUIRED" })}
-        ></input>
         {errors.userName && <p>{errors.userName.message}</p>}
-        {errors.email && <p>{errors.email.message}</p>}
         {errors.password && <p>{errors.password.message}</p>}
         <input className="input submit-bt" type="submit"></input>
       </form>

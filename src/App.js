@@ -1,17 +1,47 @@
-import React, { Suspense } from "react";
-import { Route } from "react-router-dom";
-import { Signup , Login , ErrorBoundary} from "./components/index"; 
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Signup , Login , ErrorBoundary, Profile} from "./components/Index"; 
+import AuthService from "./service/AuthService"
+import Spinner from "./components/Spinner/Spinner"
 
-export default function App() {
-  return (
-    <React.Fragment>
-       <Suspense fallback={<h2>Loading...</h2>}>
-         <ErrorBoundary>
-            <Route path="/" exact component={(props) => <Signup {...props} />} />
-            <Route path="/login" exact component={Login} />
-         </ErrorBoundary>
-      </Suspense>
-    </React.Fragment>
-  )
+export default class App extends Component {
+  
+  state =  {
+    user: null,
+    loading: true
+  }
+
+  setUser = (user) => this.setState({user , loading: false})
+
+  checkAuthenticated = () => {
+    if(this.state.user === null) {
+      const service = new AuthService()
+      service.isAuthenticated()
+      .then(response => this.setState({user: response,loading: false}))
+      .catch( err => this.setState({user: false ,loading: false }))
+    }
+    return this.state.user ?  true : false
+  }
+
+  render() {
+    const userLoggedIn = this.checkAuthenticated()
+    const appContent = 
+    <Switch>      
+     <ErrorBoundary>
+      <Route path="/" exact component={(props) => <Signup {...props} />} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/profile" exact component={(props) => <Profile {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} />} />   
+      </ErrorBoundary>         
+    </Switch>
+    return (
+      <React.Fragment>
+        <BrowserRouter>
+        { this.state.loading ? <Spinner /> :
+          appContent
+         }
+         </BrowserRouter>
+        </React.Fragment>
+    )
+    
+  }
 }
-

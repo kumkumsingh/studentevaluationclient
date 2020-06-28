@@ -5,13 +5,12 @@ import AuthService from "../../service/AuthService";
 export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    //    console.log("data :", data)
     const service = new AuthService();
     service
       .login(data.userName, data.password)
       .then((resp) => props.history.push("/profile"))
       .catch((e) => console.log(e));
-  };
+  }
   return (
     <div className="login-container">
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import UserService from "../../service/UserService";
+import "./Profile.css";
+import "../Index.css"
+import Navigation from "./Navigation"
 
 export default function Profile(props) {
   const [userName, setUserName] = useState(props.user.userName);
@@ -10,7 +13,7 @@ export default function Profile(props) {
   const [profilePicture, setProfilePicture] = useState(
     props.user.profilePicture
   );
-  const [enableUpdateBtn, setEnableUpdateBtn] = useState(false);
+  const [enableUpdateBtn, setEnableUpdateBtn] = useState(true);
 
   const userservice = new UserService();
 
@@ -38,7 +41,6 @@ export default function Profile(props) {
     userservice
       .editProfile(userName, firstName, lastName, email)
       .then((resp) => {
-        console.log("resp :", resp);
         props.setUser(resp.user);
       })
       .catch((err) => console.log("Error", err));
@@ -60,7 +62,7 @@ export default function Profile(props) {
       .catch((err) => console.log("Error", err));
   };
   const enableProfUpdBtn = () => {
-    setEnableUpdateBtn(true);
+    setEnableUpdateBtn(false);
   };
   const deleteProfileImage = () => {
     userservice
@@ -76,7 +78,7 @@ export default function Profile(props) {
     <>
       {props.isLoggedIn ? (
         <div className="main-container">
-          {/* <Navigation /> */}
+          <Navigation /> 
           <div className="work-container">
             <div className="work-space">
                 <form
@@ -123,20 +125,20 @@ export default function Profile(props) {
                >
                 <div className="profile-img-container">
                   <img
-                    src="/images/base.svg"
+                    src="/base.svg"
                     className="profile-holder"
                     alt="profile avatar"
                   ></img>
                   <img
                     src={
-                      profilePicture ? `${profilePicture}` : "/images/Vector.svg"
+                      profilePicture ? `${profilePicture}` : "/Vector.svg"
                     }
                     className="profile-img"
                     alt="vector avatar"
                   ></img>
                   {profilePicture && (
                     <img
-                      src="/images/delete-image.png"
+                      src="/delete-image.png"
                       className="profile-delete-img"
                       alt="vector delete"
                       onClick={deleteProfileImage}

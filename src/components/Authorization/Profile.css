@@ -1,0 +1,27 @@
+
+.profile-img-container{
+  position: relative;
+  height: 85px;
+  width: 85px;
+  margin-right: 1rem; 
+}
+.profile-holder {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;  
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile-delete-img{
+  position: relative;
+  left: 75px;
+  right: 0%;
+  top: -80px;
+  bottom: 0%;  
+}

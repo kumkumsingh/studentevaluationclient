@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Signup , Login , ErrorBoundary, Profile} from "./components/Index"; 
+import { Signup , Login , ErrorBoundary, Profile , Batch } from "./components/Index"; 
 import AuthService from "./service/AuthService"
 import Spinner from "./components/Spinner/Spinner"
 
@@ -30,7 +30,8 @@ export default class App extends Component {
      <ErrorBoundary>
       <Route path="/" exact component={(props) => <Signup {...props} />} />
       <Route path="/login" exact component={Login} />
-      <Route path="/profile" exact component={(props) => <Profile {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} />} />   
+      <Route path="/profile" exact component={(props) => <Profile {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} />} />  
+      <Route path="/batch" exact component={(props) => <Batch {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} /> } />
       </ErrorBoundary>         
     </Switch>
     return (

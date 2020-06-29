@@ -17,6 +17,7 @@ class UserService {
   //To store s3 location in the server 
   editProfilePicture = (profilePicture) => {
     return this.service.put ('/users/profilepicture', {profilePicture} )
+     .then(response => response.data)
   }
 
   //this is to upload into s3

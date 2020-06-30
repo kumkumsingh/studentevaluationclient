@@ -11,6 +11,7 @@ export default function AddBatchModal(props) {
     service
       .addBatch(data.batchName, data.stDate , data.endDate)
       .then((resp) => {
+        console.log("resp.user ", resp.user)
         props.setUser(resp.user)
         })
       .catch((e) => console.log(e));

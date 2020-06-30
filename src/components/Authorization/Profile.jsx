@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import UserService from "../../service/UserService";
+import UploadService from "../../service/UploadService";
 import "./Profile.css";
 import "../Index.css"
 import Navigation from "./Navigation"
@@ -15,7 +16,8 @@ export default function Profile(props) {
   );
   const [enableUpdateBtn, setEnableUpdateBtn] = useState(true);
 
-  const userservice = new UserService();
+  const userService = new UserService();
+  const uploadService = new UploadService();
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -38,7 +40,7 @@ export default function Profile(props) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    userservice
+    userService
       .editProfile(userName, firstName, lastName, email)
       .then((resp) => {
         props.setUser(resp.user);
@@ -51,10 +53,10 @@ export default function Profile(props) {
     e.preventDefault();
     const data = new FormData();
     data.append("profilePicture", e.target[0].files[0]);
-    userservice
-      .uploadProfilePicture(data)
+    uploadService
+      .uploadFile(data)
       // profile picture is uploaded into s3 and s3 location is sent as the response
-      .then((resp) => userservice.editProfilePicture(resp.profilePicture))
+      .then((resp) => userService.editProfilePicture(resp.profilePicture))
       .then((resp) => {
         setProfilePicture(resp.user.profilePicture);
         props.setUser(resp.user);
@@ -65,7 +67,7 @@ export default function Profile(props) {
     setEnableUpdateBtn(false);
   };
   const deleteProfileImage = () => {
-    userservice
+    userService
       .editProfilePicture("")
       .then((resp) => {
         setProfilePicture(resp.user.profilePicture);
@@ -78,7 +80,7 @@ export default function Profile(props) {
     <>
       {props.isLoggedIn ? (
         <div className="main-container">
-          <Navigation /> 
+          <Navigation {...props} /> 
           <div className="work-container">
             <div className="work-space">
                 <form

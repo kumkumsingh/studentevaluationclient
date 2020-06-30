@@ -1,0 +1,7 @@
+.batch-overview {
+    display: flex;
+    flex-direction: row;
+}
+.batch-overview-item {
+   width: 200px;
+}

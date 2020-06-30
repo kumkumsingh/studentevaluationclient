@@ -8,12 +8,16 @@ class StudentService {
         withCredentials: true
       })
     }
-    
-    addStudent = (batchName, stDate, endDate) => {
-      return this.service.post('/batch', {batchName, stDate, endDate})
+    addStudent = (name, imgUrl , batchId) => {
+      return this.service.post(`/students`, {name, imgUrl, batchId })
              .then(response => response.data)
     }
-
+   
+    // to get all the evaluation details of a student
+    getStudentDetails = (studentId) => {
+      return this.service.get(`/students/${studentId}`)
+      .then(response => response.data)     
+    }
   }
   
   export default StudentService

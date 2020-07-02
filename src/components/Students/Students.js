@@ -4,6 +4,7 @@ import Navigation from '../Authorization/Navigation';
 import {Redirect, Link} from 'react-router-dom';
 import BatchService from '../../service/BatchService';
 import AddStudentModal from '../Students/AddStudentModal';
+import ProgressBarChart from '../Students/ProgressBarChart'
 import '../Index.css';
 import './Student.css'
 
@@ -16,7 +17,6 @@ export default function Students(props) {
     service
       .getBatchDetails(batchId)
       .then((resp) => {
-         console.log("resp.students :",resp.batch) 
          if(resp.batch.students) {
             setStudents(resp.batch.students); 
          }
@@ -33,6 +33,8 @@ export default function Students(props) {
               {students && <div>{students.name}</div>}
               <button onClick={toggle}>Add Student</button>
               <AddStudentModal batchId={batchId} students={students} setStudents={setStudents} isShowing={isShowing} hide={toggle} />
+              <Link  to={`/batch/${batchId}/progress`}>Show Progress Bar</Link> 
+                <button>Ask Questions</button>
               {students &&
                 students.map((student, index) => {
                   return (

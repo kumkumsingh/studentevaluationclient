@@ -48,8 +48,6 @@ export default function Evaluations(props) {
                       </div>
                     );
                   })}
-                  {/* <Link >Progress Bar</Link> */}
-                  <button>Ask Questions</button>
               </div>
             </div>
           </div>

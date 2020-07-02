@@ -19,6 +19,17 @@ class BatchService {
       return this.service.get(`/batch/${batchId}`)
              .then(response => response.data)
     }
+      // To get how many students are red , green and yellow in class in percentages value
+      getProgressBarDetails = (batchId) => {
+        return this.service.get(`/batch/${batchId}/percentage`)
+               .then(response => response.data)
+      }
+
+      // To pick radnom student in class to ask question based on algorithm.
+      getRandomStudent = (batchId) => {
+        return this.service.get(`/batch/${batchId}/random`)
+               .then(response => response.data)
+      }
   }
   
   export default BatchService

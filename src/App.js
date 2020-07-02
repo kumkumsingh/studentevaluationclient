@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Signup , Login , ErrorBoundary, Profile , Batch , Students , Evaluations} from "./components/Index"; 
+import { Signup , Login , ErrorBoundary, Profile , Batch , Students , Evaluations , ProgressBarChart} from "./components/Index"; 
 import AuthService from "./service/AuthService"
 import Spinner from "./components/Spinner/Spinner"
 
@@ -33,6 +33,7 @@ export default class App extends Component {
         <Route path="/profile" exact component={(props) => <Profile {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} />} />  
         <Route path="/batch" exact component={(props) => <Batch {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} /> } />  
         <Route path="/batch/:batchId/students" exact component={(props) => <Students {...props} isLoggedIn={userLoggedIn}/> } />
+        <Route path="/batch/:batchId/progress" exact component={(props) => <ProgressBarChart {...props} isLoggedIn={userLoggedIn}/> } />
         <Route path="/student/:studentId/evaluations" exact component={(props) => <Evaluations {...props} isLoggedIn={userLoggedIn}/> } />    
       </ErrorBoundary>         
     </Switch>

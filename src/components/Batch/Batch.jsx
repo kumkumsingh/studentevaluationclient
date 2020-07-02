@@ -29,7 +29,7 @@ export default function Batch(props) {
                 batch.map((batch, index) => {
                   return (
                       <div className="batch-overview" key={index}>
-                        <div className="batch-overview-item"> <Link to={`batch/${batch._id}/students`}>{batch.batchName}</Link> </div>
+                        <div className="batch-overview-item"> <Link to={`/batch/${batch._id}/students`}>{batch.batchName}</Link> </div>
                         <div className="batch-overview-item">
                           {' '}
                           {moment(batch.stDate).format('MM-DD-YYYY')}

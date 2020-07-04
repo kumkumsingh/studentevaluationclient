@@ -1,0 +1,32 @@
+.evaluation-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2px 50px;
+    background-color: #EE964B;
+    border-bottom: 1px solid gray;
+    color: black;
+    width: 50%;
+    margin-bottom: 2px;
+  }
+  
+  .evaluation-row {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 2px 50px;
+   background-color: #FAF0CA ; 
+   border-bottom: 0.5px solid grey; 
+   width: 50%;
+   margin-bottom: 2px;
+  }
+  
+  .evaluation-item {
+    width: 50% ;
+    margin-right: 50px; 
+  }
+
+  
+  

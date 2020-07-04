@@ -1,6 +1,8 @@
 import React from "react";
 import AuthService from "../../service/AuthService";
 import { useForm } from "react-hook-form";
+import "./Signup.css"
+import { Link } from "react-router-dom";
 
 export default function Signup(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -14,7 +16,8 @@ export default function Signup(props) {
   };
   return (
     <div className="signup-container">
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form className="signup-form-container signup-form-size" onSubmit={handleSubmit(onSubmit)}>
+        <div className="signup-text">Signup</div>
         <input
           className="input"
           type="text"
@@ -44,7 +47,8 @@ export default function Signup(props) {
         {errors.userName && <p>{errors.userName.message}</p>}
         {errors.email && <p>{errors.email.message}</p>}
         {errors.password && <p>{errors.password.message}</p>}
-        <input className="input submit-bt" type="submit"></input>
+        <input className="input submit-bt" type="submit" value="Sign up"></input>
+        <p className="text-blue">Already have an account !!! <Link className="button" to={`/login`}>Log in</Link></p>
       </form>
     </div>
   );

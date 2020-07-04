@@ -1,0 +1,52 @@
+.student-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px 50px;
+  background-color: #EE964B;
+  border-bottom: 1px solid gray;
+  color: black;
+  width: 70%;
+  margin-bottom: 2px;
+}
+
+.student-row {
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ align-items: center;
+ padding: 2px 50px;
+ background-color: #FAF0CA ; 
+ border-bottom: 0.5px solid grey; 
+ width: 70%;
+ margin-bottom: 2px;
+}
+
+.student-image {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+.student-item {
+  width: 50% ;
+  margin-right: 50px; 
+}
+
+/* .link{
+  text-decoration: none; 
+  color: black;
+} */
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 100px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+

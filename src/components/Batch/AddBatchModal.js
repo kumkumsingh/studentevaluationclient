@@ -2,39 +2,44 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import BatchService from '../../service/BatchService';
 import ReactDOM from 'react-dom';
-import './AddBatchModal.css';
+
 
 export default function AddBatchModal(props) {
-  const { register, handleSubmit, errors } = useForm();
+  const {register, handleSubmit, errors} = useForm();
   const onSubmit = (data) => {
     const service = new BatchService();
     service
-      .addBatch(data.batchName, data.stDate , data.endDate)
+      .addBatch(data.batchName, data.stDate, data.endDate)
       .then((resp) => {
-        console.log("resp.user ", resp.user)
-        props.setUser(resp.user)
-        })
+        props.setUser(resp.user);
+      })
       .catch((e) => console.log(e));
   };
   return (
     <div>
-      { props.isShowing 
-        && ReactDOM.createPortal(
-            <React.Fragment>
-              <div className="show-popup-wrapper">
-                <div className="show-popup-container">
-                  <button onClick={props.hide} className="top-corner">
-                    Close
-                  </button>
-                  <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      {props.isShowing &&
+        ReactDOM.createPortal(
+          <React.Fragment>
+            <div className="show-popup-wrapper">
+              <div className="show-popup-container">
+                <img
+                  src="/delete-image.png"
+                  className="top-corner"
+                  alt="vector delete"
+                  onClick={props.hide}
+                ></img>
+                <form
+                  className="form-container"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <input
                     className="input"
                     type="text"
                     placeholder="Batch Name"
                     name="batchName"
-                    ref={register({ 
-                      required: "BATCH NAME REQUIRED" }
-                  )}
+                    ref={register({
+                      required: 'BATCH NAME REQUIRED',
+                    })}
                   ></input>
                   <input
                     className="input date"
@@ -42,7 +47,7 @@ export default function AddBatchModal(props) {
                     name="stDate"
                     placeholder="Start Date"
                     ref={register({
-                      required: "START DATE REQUIRED"
+                      required: 'START DATE REQUIRED',
                     })}
                   ></input>
                   <input
@@ -51,20 +56,23 @@ export default function AddBatchModal(props) {
                     name="endDate"
                     placeholder="End Date"
                     ref={register({
-                      required: "END DATE REQUIRED"
+                      required: 'END DATE REQUIRED',
                     })}
                   ></input>
                   {errors.batchName && <p>{errors.batchName.message}</p>}
                   {errors.stDate && <p>{errors.stDate.message}</p>}
                   {errors.endDate && <p>{errors.endDate.message}</p>}
-                  <input className="input submit-bt" type="submit" value="Add Class"></input>
-                </form> 
-                </div>
+                  <input
+                    className="input submit-bt"
+                    type="submit"
+                    value="Add Class"
+                  ></input>
+                </form>
               </div>
-            </React.Fragment>,
-            document.body
-          )
-        }
+            </div>
+          </React.Fragment>,
+          document.body
+        )}
     </div>
   );
 }

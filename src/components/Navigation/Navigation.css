@@ -1,0 +1,39 @@
+.nav-main {
+    display: flex;
+    flex-direction: column;
+    padding: 0% 0% 0% 10%;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.nav-main > * {
+    font-size: large;
+}
+.nav-bar{
+    width: 15%;
+    background-color: #F95738;  
+}
+.nav-top {
+    padding-top: 20%;
+}
+.nav-item {
+    margin-bottom: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item::after {
+    color: white;
+}
+
+.nav-item > * {
+    margin-right: 5px;  
+}
+
+.logout {
+    cursor: pointer;
+}

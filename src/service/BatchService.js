@@ -20,7 +20,7 @@ class BatchService {
              .then(response => response.data)
     }
       // To get how many students are red , green and yellow in class in percentages value
-      getProgressBarDetails = (batchId) => {
+      getEvaluationChartDetails = (batchId) => {
         return this.service.get(`/batch/${batchId}/percentage`)
                .then(response => response.data)
       }

@@ -16,7 +16,6 @@ export default function Login(props) {
         props.history.push("/profile")
       })
       .catch((e) => {
-        console.log("error message", e.response.data.message )
         setErrorMessage(e.response.data.message)});
   }
   const handleOnChange = () => {
@@ -31,7 +30,7 @@ export default function Login(props) {
           <button className="submit-bt">Sign in with Google</button>
           <hr className="hr"></hr>
           <input
-            className="input form-item"
+            className="input login-form-item"
             type="text"
             placeholder="User Name"
             name="userName"
@@ -41,7 +40,7 @@ export default function Login(props) {
           )}
           ></input>
           <input
-            className="input password form-item"
+            className="input password login-form-item"
             type="password"
             name="password"
             placeholder="Password"

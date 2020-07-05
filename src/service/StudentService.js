@@ -9,6 +9,7 @@ class StudentService {
       })
     }
     addStudent = (name, imgUrl , batchId) => {
+      console.log("add student service")
       return this.service.post(`/students`, {name, imgUrl, batchId })
              .then(response => response.data)
     }
@@ -17,6 +18,11 @@ class StudentService {
     getStudentDetails = (studentId) => {
       return this.service.get(`/students/${studentId}`)
       .then(response => response.data)     
+    }
+     // To delete paricular student
+     deleteStudent = (studentId) => {
+      return this.service.delete(`/students/${studentId}`)
+             .then(response => response.data)
     }
   }
   

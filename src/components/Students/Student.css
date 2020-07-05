@@ -28,9 +28,19 @@
   width: 35px;
   border-radius: 50%;
 }
+.random-student-image{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
 .student-item {
   width: 50% ;
   margin-right: 50px; 
+}
+.random-student-close{
+  position: absolute;
+  top:-10px;
+  right:-15px;
 }
 
 /* .link{
@@ -38,15 +48,5 @@
   color: black;
 } */
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-left: 100px;
-}
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  margin-right: 100px;
-}
+
 

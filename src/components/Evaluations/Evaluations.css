@@ -27,6 +27,15 @@
     width: 50% ;
     margin-right: 50px; 
   }
+  .evaluation-red-txt{
+      color:red;
+  }
+  .evaluation-green-txt{
+      color:green;
+  }
+  .evaluation-yellow-txt{
+      color:#ffb600;
+  }
 
   
   

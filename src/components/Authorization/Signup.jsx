@@ -47,7 +47,7 @@ export default function Signup(props) {
         {errors.userName && <p>{errors.userName.message}</p>}
         {errors.email && <p>{errors.email.message}</p>}
         {errors.password && <p>{errors.password.message}</p>}
-        <input className="input submit-bt" type="submit" value="Sign up"></input>
+        <input className="submit-bt" type="submit" value="Sign up"></input>
         <p className="text-blue">Already have an account !!! <Link className="button" to={`/login`}>Log in</Link></p>
       </form>
     </div>

@@ -3,6 +3,7 @@ import ShowModal from '../../ShowModal';
 import Navigation from '../Navigation/Navigation';
 import {Redirect, Link} from 'react-router-dom';
 import BatchService from '../../service/BatchService';
+import StudentService from '../../service/StudentService';
 import AddStudentModal from '../Students/AddStudentModal';
 import EvaluationChart from './EvaluationChart';
 import RandomStudent from './RandomStudent';
@@ -37,8 +38,15 @@ export default function Students(props) {
   const showRandomStudent = (e) => {
     setAskQuestions(true);
   };
-  const deleteStudent = (studentId) => {
-     console.log("Student deleted")
+  const deleteStudent = (studentId) =>{
+    const service = new StudentService();
+    service
+    .deleteStudent(studentId)
+    .then((resp) => {
+      setStudents(resp.batch.students)
+    })
+    .catch((e) => console.log(e));
+
   }
   return (
     <>

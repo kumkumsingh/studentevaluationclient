@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ShowModal from '../../ShowModal';
 import AddBatchModal from '../Batch/AddBatchModal';
 import './Batch.css';
-// import '../Index.css';
+import BatchService from '../../service/BatchService';
 import Navigation from '../Navigation/Navigation';
 import { Redirect , Link } from "react-router-dom";
 
 let moment = require('moment');
 
 export default function Batch(props) {
-
-  const batch = props.user.batches
+ 
+  const [ batch , setBatch] = useState(props.user.batches)
   const {isShowing, toggle} = ShowModal();
+
+  const deleteBatch = (batchId) =>{
+    const service = new BatchService();
+    service
+    .deleteBatch(batchId)
+    .then((resp) => {
+      setBatch(resp.batches)
+    })
+    .catch((e) => console.log(e));
+  }
   return (
     <>
-      {/* <div>{` The value of isLoggedIn ${props.isLoggedIn}`}</div> */}
       {props.isLoggedIn ? (
         <div className="main-container">
           <Navigation {...props} />
@@ -50,7 +59,7 @@ export default function Batch(props) {
                                 className="delete-image"
                                 src={'/delete.png'}
                                 alt="delete batch"
-                                // onClick={() => deleteStudent(student._id)}
+                                onClick={() => deleteBatch(batch._id)}
                               ></img>
                           </div>
                         </div>

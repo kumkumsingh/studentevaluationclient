@@ -43,11 +43,11 @@ export default function AddStudentModal(props) {
                   onClick={props.hide}
                 ></img>
                 <form
-                  className="form-container"
+                  className="form-container flex-column"
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <input
-                    className="input"
+                    className="input-text form-item"
                     type="text"
                     placeholder="Student Name"
                     name="name"
@@ -56,7 +56,7 @@ export default function AddStudentModal(props) {
                     })}
                   ></input>
                   <input
-                    className="input"
+                    className="input-text form-item"
                     type="file"
                     name="imgUrl"
                     onChange={(e) => handleImageChange(e)}

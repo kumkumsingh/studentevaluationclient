@@ -30,6 +30,11 @@ class BatchService {
         return this.service.get(`/batch/${batchId}/random`)
                .then(response => response.data)
       }
+       // To delete paricular batch
+       deleteBatch = (batchId) => {
+        return this.service.delete(`/batch/${batchId}`)
+               .then(response => response.data)
+      }
   }
   
   export default BatchService

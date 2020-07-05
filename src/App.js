@@ -29,9 +29,9 @@ export default class App extends Component {
     const appContent = 
     <Switch>      
       <ErrorBoundary>
-        {/* <Route path="/" exact component={Login} /> */}
+        <Route path="/" exact component={(props) => <Login {...props} />} />
         <Route path="/signup" exact component={(props) => <Signup {...props} />} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/login" exact component={(props) => <Login {...props} />} />
         <Route path="/profile" exact component={(props) => <Profile {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} />} />  
         <Route path="/batch" exact component={(props) => <Batch {...props} isLoggedIn={userLoggedIn} setUser={this.setUser} user={this.state.user} /> } />  
         <Route path="/batch/:batchId/students" exact component={(props) => <Students {...props} isLoggedIn={userLoggedIn}/> } />

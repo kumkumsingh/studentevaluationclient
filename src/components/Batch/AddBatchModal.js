@@ -29,11 +29,11 @@ export default function AddBatchModal(props) {
                   onClick={props.hide}
                 ></img>
                 <form
-                  className="form-container"
+                  className="form-container flex-column"
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <input
-                    className="input"
+                    className="input-text"
                     type="text"
                     placeholder="Batch Name"
                     name="batchName"
@@ -42,7 +42,7 @@ export default function AddBatchModal(props) {
                     })}
                   ></input>
                   <input
-                    className="input date"
+                    className="input-date form-item"
                     type="date"
                     name="stDate"
                     placeholder="Start Date"
@@ -51,7 +51,7 @@ export default function AddBatchModal(props) {
                     })}
                   ></input>
                   <input
-                    className="input date"
+                    className="input-date form-item"
                     type="date"
                     name="endDate"
                     placeholder="End Date"

@@ -9,23 +9,28 @@ export default function RandomStudent(props) {
       service
       .getRandomStudent(props.batchId)
       .then((resp) => {
-        if (resp) {
+          console.log("resp.randomStudent", resp)
           setRandomStudent(resp.randomStudent)
-        }
       })
       .catch((e) => console.log(e));
   }, [props]);
-  console.log('checking random student', randomStudent);
   const handleClose = () => {
     props.setAskQuestions(false)
   }
   return (
     <>
-      <div className="">
-         <img src="/delete-image.png" alt="close" onClick={handleClose}></img>
-         <div>{randomStudent.name}</div>
-         <div>{randomStudent.lstClrCode}</div>
-         <img src={randomStudent.imgUrl } alt="students"></img>
+      <div className="show-popup-container">
+         <img src="/delete-image.png" alt="close" className="random-student-close" onClick={handleClose}></img>
+         {randomStudent 
+          ? 
+          <div className="flex-column flex-center">
+                 <h2>Randomly Choosen Student</h2>
+                <div>Name: {randomStudent.name}</div>
+                <div>Last Color Code: {randomStudent.lstClrCode}</div>
+                <img src={randomStudent.imgUrl } className="random-student-image" alt="students"></img>
+           </div>
+         : <div>No Students in this Batch</div>
+         }
       </div>      
     </>
   );

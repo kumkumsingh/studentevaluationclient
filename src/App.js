@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Signup , Login , ErrorBoundary, Profile , Batch , Students , Evaluations} from "./components/Index"; 
+import { Signup , Login , ErrorBoundary, Profile , Batch , Students , Evaluations} from "./components/index"; 
 import AuthService from "./service/AuthService"
 import Spinner from "./components/Spinner/Spinner"
 import './App.css'

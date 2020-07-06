@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 
 export default function AddBatchModal(props) {
   const {register, handleSubmit, errors} = useForm();
+  //Add a batch
   const onSubmit = (data) => {
     const service = new BatchService();
     service

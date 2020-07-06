@@ -8,6 +8,7 @@ export default function AddStudentModal(props) {
   const [imgUrl, setImgUrl] = useState('');
   const {register, handleSubmit, errors} = useForm();
   const batchId = props.batchId;
+  //Add a student
   const onSubmit = (data) => {
     const service = new StudentService();
     service
@@ -19,13 +20,14 @@ export default function AddStudentModal(props) {
       })
       .catch((e) => console.log(e));
   };
+
   const handleImageChange = (e) => {
     const data = new FormData();
     const uploadService = new UploadService();
     data.append('profilePicture', e.target.files[0]);
     uploadService
       .uploadFile(data)
-      // profile picture is uploaded into s3 and s3 location is sent as the response
+      // students profile picture is uploaded into s3 and s3 location is sent as the response
       .then((resp) => setImgUrl(resp.profilePicture))
       .catch((err) => console.log('Error', err));
   };

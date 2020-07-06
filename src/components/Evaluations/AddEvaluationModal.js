@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom';
 
 export default function AddEvaluationModal(props) {
   const [clrCode, setClrCode] = useState('');
-  const [ errorMessage, setErrorMessage ] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const {register, handleSubmit, errors} = useForm();
   const studentId = props.studentId;
+  //creating new evaluation
   const onSubmit = (data) => {
     const service = new EvaluationService();
     service
@@ -17,7 +18,7 @@ export default function AddEvaluationModal(props) {
         props.hide();
         props.setEvaluations(newEvaluations);
       })
-      .catch(e => setErrorMessage(e.response.data.message));
+      .catch((e) => setErrorMessage(e.response.data.message));
   };
   const handleRatingChange = (e) => {
     switch (e.target.name) {
@@ -52,7 +53,9 @@ export default function AddEvaluationModal(props) {
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <div className="flex-row">
-                    <div className="form-item flex-row flex-center">Evaluation Date </div>
+                    <div className="form-item flex-row flex-center">
+                      Evaluation Date{' '}
+                    </div>
                     <input
                       className="input-date form-item"
                       type="date"
@@ -61,44 +64,48 @@ export default function AddEvaluationModal(props) {
                       ref={register({
                         required: 'EVALUATION DATE REQUIRED',
                       })}
-                    ></input>                    
+                    ></input>
                   </div>
                   <div className="flex-row">
                     <div className="form-item">Rating </div>
-                      <div className="flex-column">
-                        <div className="flex-row">
-                          <input
-                            className="form-item"
-                            type="radio"
-                            name="clrCodeGreen"
-                            value="Green"
-                            onChange={(e) => handleRatingChange(e)}
-                          ></input>
-                          <div className="form-item evaluation-green-txt">Green</div>
+                    <div className="flex-column">
+                      <div className="flex-row">
+                        <input
+                          className="form-item"
+                          type="radio"
+                          name="clrCodeGreen"
+                          value="Green"
+                          onChange={(e) => handleRatingChange(e)}
+                        ></input>
+                        <div className="form-item evaluation-green-txt">
+                          Green
                         </div>
-                        <div className="flex-row">
-                          <input
+                      </div>
+                      <div className="flex-row">
+                        <input
                           className="form-item"
                           type="radio"
                           name="clrCodeYellow"
                           value="Yellow"
                           onChange={(e) => handleRatingChange(e)}
-                          ></input>
-                          <div className="form-item evaluation-yellow-txt">Yellow</div>
+                        ></input>
+                        <div className="form-item evaluation-yellow-txt">
+                          Yellow
                         </div>
-                        <div className="flex-row">
-                          <input
-                            className="form-item"
-                            type="radio"
-                            name="clrCodeRed"
-                            value="Red"
-                            onChange={(e) => handleRatingChange(e)}
-                          ></input>
-                          <div className="form-item evaluation-red-txt">Red</div>
-                        </div>
-                      </div>  
+                      </div>
+                      <div className="flex-row">
+                        <input
+                          className="form-item"
+                          type="radio"
+                          name="clrCodeRed"
+                          value="Red"
+                          onChange={(e) => handleRatingChange(e)}
+                        ></input>
+                        <div className="form-item evaluation-red-txt">Red</div>
+                      </div>
+                    </div>
                   </div>
-                  
+
                   <input
                     className="input-text form-item"
                     type="text"
@@ -115,7 +122,9 @@ export default function AddEvaluationModal(props) {
                     type="submit"
                     value="Add Evaluation"
                   ></input>
-               {errorMessage && <div className="error-msg">* {errorMessage}</div>}
+                  {errorMessage && (
+                    <div className="error-msg">* {errorMessage}</div>
+                  )}
                 </form>
               </div>
             </div>

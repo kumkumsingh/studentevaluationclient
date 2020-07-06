@@ -9,10 +9,9 @@ import { Redirect , Link } from "react-router-dom";
 let moment = require('moment');
 
 export default function Batch(props) {
- 
   const [ batch , setBatch] = useState(props.user.batches)
   const {isShowing, toggle} = ShowModal();
-
+ //Delete a batch
   const deleteBatch = (batchId) =>{
     const service = new BatchService();
     service
